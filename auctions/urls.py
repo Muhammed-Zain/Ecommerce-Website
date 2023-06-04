@@ -1,0 +1,19 @@
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path("", views.index, name="index"),
+    path("login", views.login_view, name="login"),
+    path("logout", views.logout_view, name="logout"),
+    path("register", views.register, name="register"),
+    path("create_listing", views.create_listing, name="create_listing"),
+    path("categoryList", views.categoryList, name="categoryList"),
+    path("listings/<int:id>", views.listings, name="listings"),
+    path("addtoWatchlist/<int:id>", views.addtoWatchlist, name="addtoWatchlist"),
+    path("removefromWatchlist/<int:id>", views.removefromWatchlist, name="removefromWatchlist"),
+    path("watchlist", views.watchlist, name="watchlist"),
+    path("comment<int:id>", views.comment, name="comment"),
+    path("addBid/<int:id>", views.addBid, name="addBid"),
+    path("closeListing/<int:id>", views.closeListing, name="closeListing")
+]

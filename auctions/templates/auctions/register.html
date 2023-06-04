@@ -1,0 +1,49 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="d-flex flex-column  align-items-center">
+      <h1><strong>Register </strong></h1>
+      {% if message %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>
+      {% endif %}
+      <form action="{% url 'register' %}" method="post" class="col-md-10 d-flex flex-column align-items-center">
+          {% csrf_token %}
+          <div class="my-4 d-flex align-items-center flex-column w-25">
+              <div class="col-md-10 px-8">
+                  <input type="text" class="form-control w-10" name="username" placeholder="Username" />
+              </div>
+          </div>
+
+          <div class="my-4 d-flex align-items-center flex-column w-25">
+            <div class="col-md-10 px-8">
+                <input type="email" class="form-control w-10" name="email" placeholder="Email" />
+            </div>
+        </div>
+
+          <div class="my-4 d-flex align-items-center flex-column w-25">
+              <div class="col-md-10 px-8 ">
+                  <input type="password" class="form-control w-10" name="password" placeholder="Password" />
+              </div>
+          </div>
+
+          <div class="my-4 d-flex align-items-center flex-column w-25">
+            <div class="col-md-10 px-8 ">
+                <input type="password" class="form-control w-10" name="confirmation" placeholder="Confirm Password" />
+            </div>
+        </div>
+              <div class="my-4">
+                  <input class="btn btn-primary" type="submit" value="Register">
+              </div>
+      </form>
+      Already have an account? <a href="{% url 'register' %}">Log In here.</a>
+  </div>
+{% endblock %}

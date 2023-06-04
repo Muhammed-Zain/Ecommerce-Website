@@ -1,0 +1,52 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}
+    New Listing
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column  align-items-center">
+        <h1><strong> Create a new listing </strong></h1>
+
+        <form action="{% url 'create_listing' %}" method="post" class="col-md-10 d-flex flex-column align-items-center">
+            {% csrf_token %}
+            <div class="my-4 d-flex align-items-center flex-column w-25">
+                <div class="col-md-10 px-8">
+                    <input type="text" class="form-control w-10" name="title" placeholder="Title" />
+                </div>
+            </div>
+
+            <div class="my-4 d-flex align-items-center flex-column w-25">
+                <div class="col-md-10 px-8 ">
+                    <textarea class="form-control w-10" rows="3" name="description" placeholder="Description"></textarea>
+                </div>
+            </div>
+
+            <div class="my-4 d-flex align-items-center flex-column w-25">
+                <div class="col-md-10 px-8">
+                    <input type="number"  min="0" class="form-control w-10" name="bid" placeholder="Starting bid" />
+                </div>
+            </div>
+
+            <div class="my-4 d-flex align-items-center flex-column w-25">
+                <div class="col-md-10 px-8">
+                    <input type="url" class="form-control w-10" name="url" placeholder="Image link" />
+                </div>
+            </div>
+            <div class="my-4 d-flex align-items-center flex-column w-25">
+                <label for="form-select" class="mb-3"><strong>Category: </strong></label>
+                <div class="col-md-10 px-8">
+                    
+                    <select class="form-select" name="category">
+                        {% for category in categories %}
+                            <option value="{{ category}}" name="option">{{ category }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+                <div class="my-4">
+                    <input class="btn btn-primary" type="submit" value="Create">
+                </div>
+        </form>
+    </div>
+{% endblock %}
